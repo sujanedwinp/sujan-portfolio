@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { ShuffleText } from "@/components/shuffle-text"
 import { siteConfig } from "@/config/site-config"
 import { FileDown, ChevronDown, Shield, Code, Terminal, Globe, Lock, Database } from "lucide-react"
@@ -136,16 +137,21 @@ export function MorphingHero() {
                 transform: `translateX(${(1 - contentOpacity) * 100}px)`,
               }}
             >
-              <div className="relative">
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-100 dark:bg-blue-900/30 overflow-hidden flex items-center justify-center">
-                  <img
-                    src={siteConfig.mainImage || "/placeholder.svg"}
-                    alt="Cybersecurity"
-                    className="w-full h-full object-cover rounded-full"
-                  />
+              {siteConfig.display.showProfileImage && (
+                <div className="relative">
+                  <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-100 dark:bg-blue-900/30 overflow-hidden flex items-center justify-center">
+                    <Image
+                      src={siteConfig.profileImage || "/placeholder.svg"}
+                      alt={`${siteConfig.name}'s profile`}
+                      width={320}
+                      height={320}
+                      className="w-full h-full object-cover rounded-full"
+                      priority
+                    />
+                  </div>
+                  <div className="absolute -z-10 w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-2xl"></div>
                 </div>
-                <div className="absolute -z-10 w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-2xl"></div>
-              </div>
+              )}
             </div>
           </div>
         </div>

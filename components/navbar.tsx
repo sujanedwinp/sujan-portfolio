@@ -10,6 +10,7 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [scrolled, setScrolled] = useState(false)
+  const [showNav, setShowNav] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -42,6 +43,13 @@ export function Navbar() {
         setScrolled(false)
       }
 
+      // Show navbar after intro section (600px)
+      if (window.scrollY > 300) {
+        setShowNav(true)
+      } else {
+        setShowNav(false)
+      }
+
       // Update active section based on scroll position
       const sections = siteConfig.navigation.map((item) => item.id)
       const scrollPosition = window.scrollY + 150
@@ -65,10 +73,10 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out ${
         scrolled ? "glass-effect py-2" : "bg-transparent py-4"
-      }`}
+      } ${showNav ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
     >
-      <div className="container flex items-center justify-between px-4">
-        <div className="flex items-center gap-2">
+      <div className="container mx-auto px-4 md:px-6 flex items-center">
+        <div className="flex-none">
           <button
             onClick={() => handleNavClick("/#home", "home")}
             className="text-xl font-bold hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300"
@@ -78,17 +86,21 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-4">
+        <nav className="hidden md:flex items-center gap-8 ml-auto">
           {siteConfig.navigation.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.href, item.id)}
-              className={`nav-item-smooth ${activeSection === item.id ? "nav-item-active-smooth" : ""}`}
+              className={`px-4 py-1 rounded-full transition-all duration-300 ${
+                activeSection === item.id 
+                ? "bg-blue-500 text-white hover:bg-blue-600" 
+                : "hover:text-blue-500 dark:hover:text-blue-400"
+              }`}
             >
               {item.name}
             </button>
           ))}
-          <div className="ml-2">
+          <div className="ml-6">
             <ThemeToggle />
           </div>
         </nav>

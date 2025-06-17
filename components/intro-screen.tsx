@@ -5,11 +5,22 @@ import { ChevronDown } from "lucide-react"
 
 export function IntroScreen() {
   const [scrollY, setScrollY] = useState(0)
+  const [nameColor, setNameColor] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    // Delay the name color change by 1 second
+    const timer = setTimeout(() => {
+      setNameColor(true)
+    }, 300)
+    return () => clearTimeout(timer)
   }, [])
 
   // Simple morphing calculation
@@ -19,34 +30,57 @@ export function IntroScreen() {
   const translateX = -progress * 30 // Move left
   const translateY = -progress * 10 // Move up
 
+  // Background transition based on scroll
+  const bgProgress = Math.min(scrollY / 300, 1)
+
   if (progress >= 1) return null // Hide completely when morphed
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#f0f5ff] dark:bg-gray-950 pointer-events-none"
-      style={{ opacity: opacity > 0 ? 1 : 0 }}
-    >
+    <>
+      {/* Dark overlay that stays until component unmounts */}
+      <div 
+        className="fixed inset-0 z-40 bg-[#0a0a0a] pointer-events-none transition-opacity duration-1000"
+        style={{ 
+          opacity: bgProgress
+        }}
+      />
+      
+      {/* Main content */}
       <div
-        className="text-center transition-all duration-300 ease-out"
-        style={{
-          transform: `translate(${translateX}vw, ${translateY}vh) scale(${scale})`,
-          opacity: opacity,
+        className={`fixed inset-0 z-50 flex items-center justify-center pointer-events-none transition-all duration-1000 ${
+          mounted ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ 
+          opacity: opacity > 0 ? 1 : 0,
         }}
       >
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-4">Hi, I'm</h1>
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-blue-500 dark:text-blue-400">
-          Sujan
-        </h1>
-      </div>
-
-      {scrollY < 50 && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center text-gray-500 dark:text-gray-400">
-            <span className="text-sm mb-2">Scroll to explore</span>
-            <ChevronDown className="h-6 w-6" />
-          </div>
+        <div
+          className="text-center transition-all duration-300 ease-out"
+          style={{
+            transform: `translate(${translateX}vw, ${translateY}vh) scale(${scale})`,
+            opacity: opacity,
+          }}
+        >
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-4 text-white">Hi, I'm</h1>
+          <h1 
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter transition-all duration-700"
+            style={{
+              color: nameColor ? '#3b82f6' : '#6b7280',
+            }}
+          >
+            Sujan
+          </h1>
         </div>
-      )}
-    </div>
+
+        {scrollY < 50 && (
+          <div className="absolute bottom-8 inset-x-0 mx-auto animate-bounce">
+            <div className="flex flex-col items-center justify-center text-gray-300">
+              <span className="text-sm font-medium mb-2">Scroll to explore</span>
+              <ChevronDown className="h-6 w-6" />
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   )
 }

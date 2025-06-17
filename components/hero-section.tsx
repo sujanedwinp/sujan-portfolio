@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { ShuffleText } from "@/components/shuffle-text"
 import { siteConfig } from "@/config/site-config"
 import { FileDown } from "lucide-react"
@@ -28,7 +29,7 @@ export function HeroSection() {
   const contentOpacity = progress > 0.5 ? (progress - 0.5) * 2 : 0
 
   return (
-    <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 min-h-screen flex items-center">
+    <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 min-h-screen flex items-center bg-[#f0f5ff] dark:bg-gray-950">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex flex-col space-y-6 md:w-1/2">
@@ -93,16 +94,21 @@ export function HeroSection() {
             className="md:w-1/2 flex justify-center slide-in-left transition-all duration-700 ease-out"
             style={{ opacity: contentOpacity, transform: `translateX(${(1 - contentOpacity) * 50}px)` }}
           >
-            <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-100 dark:bg-blue-900/30 overflow-hidden flex items-center justify-center">
-                <img
-                  src={siteConfig.mainImage || "/placeholder.svg"}
-                  alt="Cybersecurity"
-                  className="w-full h-full object-cover rounded-full"
-                />
+            {siteConfig.display.showProfileImage && (
+              <div className="relative">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-100 dark:bg-blue-900/30 overflow-hidden flex items-center justify-center">
+                  <Image
+                    src={siteConfig.profileImage || "/placeholder.svg"}
+                    alt={`${siteConfig.name}'s profile`}
+                    width={320}
+                    height={320}
+                    className="w-full h-full object-cover rounded-full"
+                    priority
+                  />
+                </div>
+                <div className="absolute -z-10 w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-2xl"></div>
               </div>
-              <div className="absolute -z-10 w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-2xl"></div>
-            </div>
+            )}
           </div>
         </div>
       </div>

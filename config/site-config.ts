@@ -46,11 +46,18 @@ export interface FooterConfig {
 
 export const siteConfig = {
   name: "Sujan",
-  title: "Cybersecurity Analyst Portfolio",
+  title: "Sujan's Portfolio",
   description: "Professional portfolio of Sujan, an aspiring Cybersecurity Analyst",
 
-  // Main image
-  mainImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FZH4LVmz9Gxa0334IJqEv3qhBXwaSn.png",
+  // Display Settings
+  display: {
+    showProfileImage: false, // Toggle to show/hide the profile image
+  },
+
+  // Images
+  profileImage: "/images/profile.jpeg", // Your personal photo
+  siteLogo: "/images/site-logo.png",   // Original logo
+  favicon: "/favicon.png",             // Optimized favicon
 
   // Navigation
   navigation: [
@@ -77,29 +84,18 @@ export const siteConfig = {
   contact: {
     info: {
       email: "sujanedwin2006@gmail.com",
-      phone: "+91 8317334461",
       location: "Bangalore, India",
     } as ContactInfo,
     social: [
       {
         name: "GitHub",
-        url: "https://github.com/sujan",
+        url: "https://github.com/whatdaahaael",
         icon: "Github",
       },
       {
         name: "LinkedIn",
-        url: "https://linkedin.com/in/sujan",
+        url: "https://www.linkedin.com/in/sujan-edwin-penubala-1981bb313/",
         icon: "Linkedin",
-      },
-      {
-        name: "Twitter",
-        url: "https://twitter.com/sujan",
-        icon: "Twitter",
-      },
-      {
-        name: "LeetCode",
-        url: "https://leetcode.com/sujan",
-        icon: "Code",
       },
       {
         name: "Email",

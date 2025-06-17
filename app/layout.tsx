@@ -11,9 +11,11 @@ import { ScrollAnimationProvider } from "@/components/scroll-animation-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | ${siteConfig.title}`,
+  title: siteConfig.title,
   description: siteConfig.description,
-    generator: 'v0.dev'
+  icons: {
+    icon: siteConfig.favicon,
+  },
 }
 
 export default function RootLayout({
@@ -23,8 +25,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" type="image/png" href={siteConfig.favicon} />
+      </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <ScrollAnimationProvider>
             <div className="min-h-screen flex flex-col bg-[#f0f5ff] dark:bg-gray-950">
               <Navbar />
