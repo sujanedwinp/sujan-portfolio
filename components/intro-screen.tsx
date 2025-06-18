@@ -16,10 +16,10 @@ export function IntroScreen() {
   }, [])
 
   useEffect(() => {
-    // Delay the name color change by 1 second
+    // Start the color change almost immediately with a minimal delay
     const timer = setTimeout(() => {
       setNameColor(true)
-    }, 300)
+    }, 0)
     return () => clearTimeout(timer)
   }, [])
 
@@ -63,9 +63,12 @@ export function IntroScreen() {
         >
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-4 text-white">Hi, I'm</h1>
           <h1 
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter transition-all duration-700"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter"
             style={{
               color: nameColor ? '#3b82f6' : '#6b7280',
+              transitionProperty: 'color',
+              transitionDuration: '200ms',
+              transitionTimingFunction: 'ease-in-out'
             }}
           >
             Sujan

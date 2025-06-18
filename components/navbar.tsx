@@ -106,9 +106,9 @@ export function Navbar() {
         </nav>
 
         {/* Mobile Navigation Toggle */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center gap-4 ml-auto">
           <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={toggleMenu} className="ml-2">
+          <Button variant="ghost" size="icon" onClick={toggleMenu}>
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             <span className="sr-only">Toggle menu</span>
           </Button>

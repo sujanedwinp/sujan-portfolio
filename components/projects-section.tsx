@@ -1,3 +1,5 @@
+"use client"
+
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { ExternalLink, Github } from "lucide-react"
 import Link from "next/link"
@@ -5,13 +7,21 @@ import { siteConfig, getIconComponent } from "@/config/site-config"
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-16 md:py-24 bg-white dark:bg-gray-900">
+    <section id="projects" className="py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="section-heading">
-          <h2 className="section-title fade-in-up">My Projects</h2>
+          <h2 
+            className="section-title fade-in-up"
+            style={{ transitionDuration: `${siteConfig.animation.fadeInDuration}ms` }}
+          >
+            My Projects
+          </h2>
           <p
             className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 fade-in-up"
-            style={{ transitionDelay: "100ms" }}
+            style={{ 
+              transitionDuration: `${siteConfig.animation.fadeInDuration}ms`,
+              transitionDelay: "100ms" 
+            }}
           >
             "Turning Theory into <span className="text-blue-500 dark:text-blue-400">Practicality</span>."
           </p>
@@ -24,8 +34,11 @@ export function ProjectsSection() {
             return (
               <Card
                 key={index}
-                className="flex flex-col h-full hover-elevation stagger-item"
-                style={{ transitionDelay: `${index * 100 + 200}ms` }}
+                className="flex flex-col h-full border-blue-200 dark:border-blue-900 transition-all duration-300 transform hover-elevation fade-in-up hover-glow"
+                style={{ 
+                  transitionDuration: `${siteConfig.animation.fadeInDuration}ms`,
+                  transitionDelay: `${(index + 2) * 100}ms` 
+                }}
               >
                 <CardHeader>
                   <div className="mb-4">
@@ -51,10 +64,12 @@ export function ProjectsSection() {
                     <Github className="mr-2 h-4 w-4 inline-block" />
                     Code
                   </Link>
-                  <Link href={project.demoUrl} className="btn-solid-blue text-sm py-1.5 px-4">
-                    <ExternalLink className="mr-2 h-4 w-4 inline-block" />
-                    Demo
-                  </Link>
+                  {project.demoAvailable && (
+                    <Link href={project.demoUrl} className="btn-solid-blue text-sm py-1.5 px-4">
+                      <ExternalLink className="mr-2 h-4 w-4 inline-block" />
+                      Demo
+                    </Link>
+                  )}
                 </CardFooter>
               </Card>
             )

@@ -138,19 +138,19 @@ export function MorphingHero() {
               }}
             >
               {siteConfig.display.showProfileImage && (
-                <div className="relative">
-                  <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-100 dark:bg-blue-900/30 overflow-hidden flex items-center justify-center">
+              <div className="relative">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-100 dark:bg-blue-900/30 overflow-hidden flex items-center justify-center">
                     <Image
                       src={siteConfig.profileImage || "/placeholder.svg"}
                       alt={`${siteConfig.name}'s profile`}
                       width={320}
                       height={320}
-                      className="w-full h-full object-cover rounded-full"
+                    className="w-full h-full object-cover rounded-full"
                       priority
-                    />
-                  </div>
-                  <div className="absolute -z-10 w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-2xl"></div>
+                  />
                 </div>
+                <div className="absolute -z-10 w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-2xl"></div>
+              </div>
               )}
             </div>
           </div>

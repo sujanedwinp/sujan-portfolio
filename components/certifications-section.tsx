@@ -1,3 +1,5 @@
+"use client"
+
 import { Card, CardContent } from "@/components/ui/card"
 import { ExternalLink } from "lucide-react"
 import { siteConfig } from "@/config/site-config"
@@ -8,10 +10,18 @@ export function CertificationsSection() {
     <section id="certifications" className="py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="section-heading">
-          <h2 className="section-title fade-in-up">Certifications</h2>
+          <h2 
+            className="section-title fade-in-up"
+            style={{ transitionDuration: `${siteConfig.animation.fadeInDuration}ms` }}
+          >
+            Certifications
+          </h2>
           <p
             className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 fade-in-up"
-            style={{ transitionDelay: "100ms" }}
+            style={{ 
+              transitionDuration: `${siteConfig.animation.fadeInDuration}ms`,
+              transitionDelay: "100ms" 
+            }}
           >
             "Proof of <span className="text-blue-500 dark:text-blue-400">commitment</span>. Credentials that back the
             skills."
@@ -22,8 +32,11 @@ export function CertificationsSection() {
           {siteConfig.certifications.map((cert, index) => (
             <Card
               key={index}
-              className="overflow-hidden hover-elevation stagger-item"
-              style={{ transitionDelay: `${index * 100 + 200}ms` }}
+              className="overflow-hidden border-blue-200 dark:border-blue-900 transition-all duration-300 transform hover-elevation fade-in-up hover-glow"
+              style={{ 
+                transitionDuration: `${siteConfig.animation.fadeInDuration}ms`,
+                transitionDelay: `${(index + 2) * 100}ms` 
+              }}
             >
               <CardContent className="p-6">
                 <div className="flex justify-between items-start mb-2">

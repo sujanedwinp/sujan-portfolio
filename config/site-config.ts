@@ -54,6 +54,16 @@ export const siteConfig = {
     showProfileImage: false, // Toggle to show/hide the profile image
   },
 
+  // Animation Settings
+  animation: {
+    fadeInDuration: 150, // Duration in milliseconds for fade-in animations
+  },
+
+  // Theme Settings
+  theme: {
+    background: "#020817", // Dark background color for all sections
+  },
+
   // Images
   profileImage: "/images/profile.jpeg", // Your personal photo
   siteLogo: "/images/site-logo.png",   // Original logo
@@ -62,7 +72,6 @@ export const siteConfig = {
   // Navigation
   navigation: [
     { name: "Home", href: "/#home", id: "home" },
-    { name: "About", href: "/#about", id: "about" },
     { name: "Education", href: "/#education", id: "education" },
     { name: "Projects", href: "/#projects", id: "projects" },
     { name: "Certifications", href: "/#certifications", id: "certifications" },
@@ -73,11 +82,6 @@ export const siteConfig = {
   hero: {
     title: "Hi, I'm",
     name: "Sujan",
-    subtitle: "Aspiring to be a",
-    profession: "Cybersecurity Analyst",
-    learningPrefix: "Learning:",
-    skills: ["Python", "Java", "C", "Linux", "SQL", "DBMS", "Data Structures"],
-    skillRotationSpeed: 3000, // milliseconds
   },
 
   // Contact Information & Social Media (shared between contact section and footer)
@@ -118,17 +122,15 @@ export const siteConfig = {
       institution: "Bishop Cotton Boys' School",
       degree: "High School",
       location: "Bangalore, India",
-      description:
-        "Foundation and Reasoning for my intreset in Computer Programming. Provided me enough scope for learning and growing, in terms of knowledge and basic programming skills.",
+      description: "Foundation in Computer Programming and critical thinking skills"
     },
     {
       id: "edu2",
       period: "2024-Present",
-      institution: "St Josheph's University",
+      institution: "St Joseph's University",
       degree: "Bachelor in Computer Applications",
       location: "Bangalore, India",
-      description:
-        "Here is where I found out about Cyberscurity. Visiting hackathons and obtaining valuable skills and learning advanced data structures helped me in understanding Computer Architecure and Design",
+      description: "Focus on Computer Science fundamentals and Cybersecurity"
     },
   ],
 
@@ -141,6 +143,7 @@ export const siteConfig = {
       tags: ["Python", "256-Hash", "Encryption", "Decryption"],
       githubUrl: "https://github.com/whatdaahaael/Password-Manager-Basic",
       demoUrl: "https://github.com/whatdaahaael/Password-Manager-Basic",
+      demoAvailable: true,
     },
   ],
 

@@ -1,12 +1,10 @@
-import type React from "react"
+import { ClientLayout } from "@/components/client-layout"
+import { siteConfig } from "@/config/site-config"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { siteConfig } from "@/config/site-config"
-import { ScrollAnimationProvider } from "@/components/scroll-animation-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -14,7 +12,7 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   icons: {
-    icon: siteConfig.favicon,
+    icon: "/images/favicon/icon.png",
   },
 }
 
@@ -25,18 +23,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" type="image/png" href={siteConfig.favicon} />
-      </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <ScrollAnimationProvider>
-            <div className="min-h-screen flex flex-col bg-[#f0f5ff] dark:bg-gray-950">
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-          </ScrollAnimationProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClientLayout>
+            {children}
+            <Footer />
+          </ClientLayout>
         </ThemeProvider>
       </body>
     </html>
