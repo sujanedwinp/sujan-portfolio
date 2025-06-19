@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, FileCheck, FileText } from "lucide-react"
 import Link from "next/link"
 import { siteConfig, getIconComponent } from "@/config/site-config"
 
@@ -30,6 +30,7 @@ export function ProjectsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {siteConfig.projects.map((project, index) => {
             const IconComponent = getIconComponent(project.icon)
+            const isBotium = project.title.includes("Botium Toys")
 
             return (
               <Card
@@ -42,7 +43,11 @@ export function ProjectsSection() {
               >
                 <CardHeader>
                   <div className="mb-4">
-                    <IconComponent className="h-10 w-10 text-blue-500 dark:text-blue-400" />
+                    {isBotium ? (
+                      <FileCheck className="h-10 w-10 text-blue-500 dark:text-blue-400" />
+                    ) : (
+                      <IconComponent className="h-10 w-10 text-blue-500 dark:text-blue-400" />
+                    )}
                   </div>
                   <CardTitle>{project.title}</CardTitle>
                 </CardHeader>
@@ -59,15 +64,21 @@ export function ProjectsSection() {
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter className="flex justify-between">
+                <CardFooter className="flex justify-between gap-2">
                   <Link href={project.githubUrl} className="btn-outline-blue text-sm py-1.5 px-4">
                     <Github className="mr-2 h-4 w-4 inline-block" />
-                    Code
+                    {project.githubText || "Code"}
                   </Link>
                   {project.demoAvailable && (
                     <Link href={project.demoUrl} className="btn-solid-blue text-sm py-1.5 px-4">
                       <ExternalLink className="mr-2 h-4 w-4 inline-block" />
-                      Demo
+                      {project.demoText || "Demo"}
+                    </Link>
+                  )}
+                  {project.pdfUrl && (
+                    <Link href={project.pdfUrl} className="btn-outline-blue text-sm py-1.5 px-4 flex items-center gap-2" target="_blank" rel="noopener noreferrer">
+                      <FileText className="h-4 w-4 inline-block" />
+                      {project.pdfText || "PDF"}
                     </Link>
                   )}
                 </CardFooter>

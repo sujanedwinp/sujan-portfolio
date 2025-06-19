@@ -19,6 +19,7 @@ export type IconType =
   | "Wifi"
   | "Monitor"
   | "ShieldUser"
+  | "FileCheck"
 
 export interface Certificate {
   title: string
@@ -142,9 +143,22 @@ export const siteConfig = {
       icon: "ShieldUser" as IconType,
       tags: ["Python", "256-Hash", "Encryption", "Decryption"],
       githubUrl: "https://github.com/whatdaahaael/Password-Manager-Basic",
+      githubText: "Code",
       demoUrl: "https://github.com/whatdaahaael/Password-Manager-Basic",
-      demoAvailable: true,
+      demoText: "Demo",
+      demoAvailable: false,
     },
+    {
+      title: "Botium Toys: Internal Security Audit",
+      description: "This is a sample security audit report for Botium Toys, a company that sells toys and other products. The report is a sample and is not real.",
+      icon: "FileCheck" as IconType,
+      tags: ["Controls Assessment", "Security", "Audit", "Risk Assessment", "Compliance"],
+      githubUrl: "https://github.com/whatdaahaael/Botium-Internal-Security-Audit",
+      githubText: "More Info",
+      pdfUrl: "https://drive.google.com/file/d/1LWRq9ZL8_mP16nGDPDbCMs6gLMu-wKbw/view?usp=drive_link",
+      pdfText: "Audit",
+      pdfAvailable: true,
+    }
   ],
 
   // Certifications
@@ -207,6 +221,8 @@ export function getIconComponent(iconName: IconType) {
       return Wifi
     case "Monitor":
       return Monitor
+    case "FileCheck":
+      return FileCheck
     default:
       return Shield
   }
@@ -254,4 +270,5 @@ import {
   Linkedin,
   Twitter,
   Mail,
+  FileCheck,
 } from "lucide-react"
