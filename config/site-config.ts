@@ -127,7 +127,7 @@ export const siteConfig = {
     },
     {
       id: "edu2",
-      period: "2024-Present",
+      period: "2024-2027",
       institution: "St Joseph's University",
       degree: "Bachelor in Computer Applications",
       location: "Bangalore, India",

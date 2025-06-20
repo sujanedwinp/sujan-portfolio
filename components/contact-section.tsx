@@ -23,7 +23,7 @@ export function ContactSection() {
               transitionDelay: "100ms" 
             }}
           >
-            Let's connect and explore opportunities together
+            Let's <span className="text-blue-500 dark:text-blue-400">connect</span> and explore opportunities together
           </p>
         </div>
 
