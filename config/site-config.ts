@@ -49,7 +49,7 @@ export const siteConfig = {
   name: "Sujan",
   title: "Sujan's Portfolio",
   description: "Professional portfolio of Sujan, an aspiring Cybersecurity Analyst",
-
+  
   // Display Settings
   display: {
     showProfileImage: false, // Toggle to show/hide the profile image
@@ -94,7 +94,7 @@ export const siteConfig = {
     social: [
       {
         name: "GitHub",
-        url: "https://github.com/whatdaahaael",
+        url: "https://github.com/sujanedwinp",
         icon: "Github",
       },
       {
@@ -142,7 +142,7 @@ export const siteConfig = {
       description: "This Password manager is a very basic one built using Tkinter",
       icon: "ShieldUser" as IconType,
       tags: ["Python", "256-Hash", "Encryption", "Decryption"],
-      githubUrl: "https://github.com/whatdaahaael/Password-Manager-Basic",
+      githubUrl: "https://github.com/sujanedwinp/Password-Manager-Basic",
       githubText: "Code",
       demoUrl: "https://github.com/whatdaahaael/Password-Manager-Basic",
       demoText: "Demo",
@@ -153,7 +153,7 @@ export const siteConfig = {
       description: "This is a sample security audit report for Botium Toys, a company that sells toys and other products. The report is a sample and is not real.",
       icon: "FileCheck" as IconType,
       tags: ["Controls Assessment", "Security", "Audit", "Risk Assessment", "Compliance"],
-      githubUrl: "https://github.com/whatdaahaael/Botium-Internal-Security-Audit",
+      githubUrl: "https://github.com/sujanedwinpl/Botium-Internal-Security-Audit",
       githubText: "More Info",
       pdfUrl: "https://drive.google.com/file/d/1LWRq9ZL8_mP16nGDPDbCMs6gLMu-wKbw/view?usp=drive_link",
       pdfText: "Audit",
