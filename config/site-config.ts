@@ -144,7 +144,7 @@ export const siteConfig = {
       tags: ["Python", "256-Hash", "Encryption", "Decryption"],
       githubUrl: "https://github.com/sujanedwinp/Password-Manager-Basic",
       githubText: "Code",
-      demoUrl: "https://github.com/whatdaahaael/Password-Manager-Basic",
+      demoUrl: "https://github.com/sujanedwinp/Password-Manager-Basic",
       demoText: "Demo",
       demoAvailable: false,
     },
